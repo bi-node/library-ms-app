@@ -1,5 +1,3 @@
-const Person = require('./person'); // Correct way to import in Node.js
-const CheckOutEntry=require('./checkoutentry');
 
 const Person = require('./person');
 const CheckOutEntry = require('./checkoutentry');
