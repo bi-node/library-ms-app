@@ -20,7 +20,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
            
             document.getElementById('message').textContent = 'Login successful';
             document.getElementById('message').style.color = 'green';
-            window.location.href = 'home.html';
+            window.location.href = 'index.html';
             // window.location.replace('/home.html');
         } else {
             document.getElementById('message').textContent = data;
