@@ -18,3 +18,17 @@ exports.getAllMembers = async function (req, res) {
         res.status(500).json({ "error": "Internal server error" });
     }
 };
+
+exports.addNewMember = async function (req, res) {
+
+    let { firstname, lastname, telephone, address } = req.body;
+    const newMember = new LibraryMember(null, firstname, lastname, telephone, address);
+    try {
+        const addedMember = await DataAccess.addNewMember(newMember);
+        res.status(201).json(addedMember);
+    }
+    catch (error) {
+        res.status(500).json({ "error": "Internal server error" });
+    }
+
+};

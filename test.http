@@ -9,3 +9,17 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/members
+
+###
+POST http://localhost:3000/members
+Content-Type: application/json
+
+
+{
+    "firstname": "Sagar",
+    "lastname": "Maharjan",
+    "telephone": "985-000-6000",
+    "address": "Huston, Texas, USA"
+  }
+
+ 

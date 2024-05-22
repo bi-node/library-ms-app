@@ -3,9 +3,9 @@ const Person = require('./person');
 const CheckOutEntry = require('./checkoutentry');
 
 class LibraryMember extends Person {
-    constructor(memberId, firstName, lastName, telephone, address) {
-        super(firstName, lastName, telephone, address);
-        this.memberId = memberId;
+    constructor(memberid, firstname, lastname, telephone, address) {
+        super(firstname, lastname, telephone, address);
+        this.memberid = memberid;
         this.checkoutRecord = [];
     }
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const authRouter = require('./routes/auth-router');
 const librarymemberRouter=require('./routes/librarymember-routers')
+const bookRouter=require('./routes/book-router')
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
@@ -23,6 +24,8 @@ app.use(express.static(path.join(__dirname, '../', 'client','images')));
 //routers
 app.use('/auth', authRouter);
 app.use('/members',librarymemberRouter);
+app.use('/books',bookRouter);
+
 
 
 const PORT = process.env.PORT || 3000;

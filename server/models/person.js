@@ -1,8 +1,8 @@
 class Person{
-    constructor(fname, lname, mob, address){
-        this.fname=fname;
-        this.lname=lname;
-        this.mob=mob;
+    constructor(firstname, lastname, telephone, address){
+        this.firstname=firstname;
+        this.lastname=lastname;
+        this.telephone=telephone;
         this.address=address;
     }
 }
