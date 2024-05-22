@@ -3,11 +3,11 @@ const DataAccess = require('../data-access/data-access-facade');
 
 exports.getAllBooks = async function (req, res) {
     try {
-        const allmembers = await DataAccess.readAllMember();
-        if (allmembers) {
-            res.status(200).json(allmembers);
+        const allbooks = await DataAccess.readAllBooks();
+        if (allbooks) {
+            res.status(200).json(allbooks);
         } else {
-            res.status(401).json({ "error": "User does not exist" });
+            res.status(401).json({ "error": "Book does not exist" });
         }
     } catch (error) {
         res.status(500).json({ "error": "Internal server error" });

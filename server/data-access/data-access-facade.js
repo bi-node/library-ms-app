@@ -42,8 +42,17 @@ module.exports = class DataAccessFacade {
         }
     }
 
-    readAllBooks(){
-
+    static async readAllBooks(){
+        const client = await pool.connect();
+        try {
+            const resultset = await client.query('SELECT * FROM public.books');
+            return resultset.rows;
+        } catch (error) {
+            console.error("Error reading all members:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
     }
     
     
