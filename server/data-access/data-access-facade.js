@@ -1,6 +1,20 @@
 const pool = require('../db');
 
 module.exports = class DataAccessFacade {
+    static async readAllUser() {
+        const client = await pool.connect();
+        try {
+            const resultset = await client.query('SELECT id, username, role FROM public.users');
+            return resultset.rows;
+        } catch (error) {
+            console.error("Error reading all Users:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
+    }
+
+
     static async readAllMember() {
         const client = await pool.connect();
         try {
