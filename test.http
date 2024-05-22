@@ -3,6 +3,9 @@ Content-Type: application/json
 
 
 {
-    "username" : "super",
-    "password" : "1234"
+    "username" : "batman",
+    "password" : "x"
 }
+
+###
+GET http://localhost:3000/members

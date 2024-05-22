@@ -1,13 +1,13 @@
-const User = require('../models/user');
 const DataAccess = require('../data-access/data-access-facade')
 
 exports.getAuthentication = async function (req, res) {
     const username = req.body.username;
     try {
-        const foundUser = await User.findUsername(username);
-        if (foundUser) {
+        const allUsers = await DataAccess.readAllUser();
+        const isUser=allUsers.find(user=>user.username==username)
+        if (isUser) {
             const password = req.body.password;
-            if (password === foundUser.password) {
+            if (password === isUser.password) {
                 res.status(200).json({ "username": username, "password": password });
             } else {
                 res.status(401).json({ "error": "Password does not match" });

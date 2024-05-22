@@ -1,5 +1,6 @@
 const express = require('express');
 const authRouter = require('./routes/auth-router');
+const librarymemberRouter=require('./routes/librarymember-routers')
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
@@ -19,7 +20,10 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../', 'client')));
 app.use(express.static(path.join(__dirname, '../', 'client','images')));
 
+//routers
 app.use('/auth', authRouter);
+app.use('/members',librarymemberRouter);
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`connected to ${PORT}`));

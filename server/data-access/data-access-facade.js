@@ -1,52 +1,45 @@
 const pool = require('../db');
 
-
-// public HashMap<String,Book> readBooksMap();
-// 	public HashMap<String,User> readUserMap();
-// 	public HashMap<String, LibraryMember> readMemberMap();
-// 	public void saveNewMember(LibraryMember member); 
-// 	public void saveNewBook(Book book);
-// 	public void updateBook(Book book);
-// 	public  void updateLibraryMember(LibraryMember member);
-
-
 module.exports = class DataAccessFacade {
-    static readAllBook() {
-
+    static async readAllMember() {
+        const client = await pool.connect();
+        try {
+            const resultset = await client.query('SELECT * FROM public."libraryMembers"');
+            return resultset.rows;
+        } catch (error) {
+            console.error("Error reading all members:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
     }
 
     static async readAllUser() {
         const client = await pool.connect();
         try {
-            const resultset = await client.query('SELECT * FROM users ');
-            const allUsers = resultset.rows;
-            return allUsers;
-            //return result.rows[0];
+            const resultset = await client.query('SELECT * FROM users');
+            return resultset.rows;
+        } catch (error) {
+            console.error("Error reading all users:", error);
+            throw error; // Re-throw the error to be caught by the calling function
         } finally {
             client.release();
         }
-
-    }
-
-
-
-    static readAllMember() {
-
     }
 
     saveNewMember(member) {
-
+        // Implementation here
     }
-    saveNewBook(book) {
 
+    saveNewBook(book) {
+        // Implementation here
     }
 
     updateBook(book) {
-
+        // Implementation here
     }
 
     updateLibraryMember(member) {
-
+        // Implementation here
     }
-
 };
