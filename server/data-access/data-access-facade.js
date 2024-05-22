@@ -56,8 +56,19 @@ module.exports = class DataAccessFacade {
     }
     
     
-    saveNewBook(book) {
-        // Implementation here
+    static async addNewBook(book) {
+        const client = await pool.connect();
+        try {
+            const queryText = 'INSERT INTO public.books(isbn, title, max_checkout_length, authors) VALUES($1, $2, $3, $4) RETURNING *';
+            const values = [book.isbn, book.title, book.max_checkout_length, book.authors];
+            const resultset = await client.query(queryText, values);
+            return resultset.rows[0]; // Return the inserted row
+        } catch (error) {
+            console.error("Error adding new member:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
     }
 
     updateBook(book) {

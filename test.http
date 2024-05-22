@@ -25,4 +25,18 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/books
 
- 
+
+###
+ POST http://localhost:3000/books
+ Content-Type: application/json
+
+
+ {
+    "isbn": "970-3-12",
+    "title": "Fundamentals of C++ Programming",
+    "max_checkout_length": 14,
+    "authors": [
+      "Keith Roth",
+      "Preacher"
+    ]
+  }
