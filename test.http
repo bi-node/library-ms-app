@@ -40,3 +40,6 @@ GET http://localhost:3000/books
       "Preacher"
     ]
   }
+
+###
+GET http://localhost:3000/books/book?isbn=111-3-00

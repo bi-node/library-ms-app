@@ -54,6 +54,20 @@ module.exports = class DataAccessFacade {
             client.release();
         }
     }
+
+    static async getBookbyId(isbn){
+        const client = await pool.connect();
+        try {
+            const checkQueryText = 'SELECT * FROM public.books WHERE isbn = $1';
+            const resultset = await client.query(checkQueryText, [isbn]);
+            return resultset.rows;
+        } catch (error) {
+            console.error("Error reading all members:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
+    }
     
     static async addNewBook(book) {
         const client = await pool.connect();

@@ -6,8 +6,15 @@ const router=express.Router();
 //show all books
 router.get('/',bookController.getAllBooks);
 
+router.get('/book',bookController.getBookById);
+
+router.get('/:id', bookController.getBookById)
+
 //add new Book
 router.post('/',bookController.addNewBook);
+
+//add book copy
+
 
 
 
