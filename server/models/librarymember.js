@@ -17,18 +17,15 @@ class LibraryMember extends Person {
         return this.memberId;
     }
 
+    static addMember(){
+        
+    }
+
     getCheckOutEntries() {
         return this.checkoutRecord;
     }
 
-    toString() {
-        let string = `Member Info: ID: ${this.memberId}, name: ${this.getFirstName()} ${this.getLastName()}, ${this.getTelephone()} ${this.getAddress()}`;
-        let sb = string;
-        for (let cc of this.getCheckOutEntries()) {
-            sb += `, Book: ${cc.getBook()}, CheckOutDate: ${cc.getCheckOutDate()}, DueDate: ${cc.getDueDate()}`;
-        }
-        return sb;
-    }
+   
 }
 
 module.exports = LibraryMember;
