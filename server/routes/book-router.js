@@ -14,6 +14,7 @@ router.get('/:id', bookController.getBookById)
 router.post('/',bookController.addNewBook);
 
 //add book copy
+router.post('/addbookcopy', bookController.addCopy);
 
 
 

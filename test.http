@@ -42,4 +42,15 @@ GET http://localhost:3000/books
   }
 
 ###
-GET http://localhost:3000/books/book?isbn=111-3-00
+POST http://localhost:3000/books/addbookcopy
+Content-Type: application/json
+
+
+{
+  "isbn" : "111-3-00",
+  "noCopies" : 3
+}
+
+###
+GET http://localhost:3000/books/?isbn=978-1-23
+

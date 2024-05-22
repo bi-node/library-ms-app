@@ -106,9 +106,23 @@ module.exports = class DataAccessFacade {
     }
     
 
-    updateBook(book) {
-        // Implementation here
+    static async updateBookCopy(isbn, noCopies) {
+        const client = await pool.connect();
+        try {
+            for(let i=0;i<noCopies; i++){
+            const copyQueryText = 'INSERT INTO public.book_copies(isbn, status) VALUES($1, $2) RETURNING *';
+            const copyValues = [isbn, 'available']; // Assuming the status is 'available' for a new book
+            await client.query(copyQueryText, copyValues);
+            }
+
+        } catch (error) {
+            console.error("Error adding new member:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
     }
+
 
     updateLibraryMember(member) {
         // Implementation here

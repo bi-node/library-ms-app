@@ -4,7 +4,7 @@ const DataAccess = require('../data-access/data-access-facade');
 exports.getAllBooks = async function (req, res) {
     try {
         if (req.query['isbn']) {
-            const book= await DataAccess.getBookbyId(req.query['isbn'])
+            const book = await DataAccess.getBookbyId(req.query['isbn'])
             res.status(200).json(book);
         }
         else {
@@ -52,12 +52,25 @@ exports.addNewBook = async function (req, res) {
         res.status(500).json({ "error": "Internal server error" });
     }
 
-    exports.addBookCopy = async function (req, res) {
+};
 
-
+exports.addCopy = async function (req, res) {
+    try{
+        const getBook=await DataAccess.getBookbyId(req.body.isbn);
+        if(getBook)
+            {
+                await DataAccess.updateBookCopy(req.body.isbn, parseInt(req.body.noCopies));
+                res.status(201).json({Book:getBook, noCopies:req.body.noCopies});
+            }
+            else {
+                res.status(409).json({ "error": "Book Copies could not be added" });
+            }
     }
 
-
+    catch (error) {
+        res.status(500).json({ "error": "Internal server error" });
+    }
+    
 };
 
 
