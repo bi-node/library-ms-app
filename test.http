@@ -32,7 +32,7 @@ GET http://localhost:3000/books
 
 
  {
-    "isbn": "970-3-12",
+    "isbn": "111-3-00",
     "title": "Fundamentals of C++ Programming",
     "max_checkout_length": 14,
     "authors": [
