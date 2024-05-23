@@ -4,29 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/index.css">
+    <style>
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-warning text-center py-3">
+    <header id="lms">
         <h1 class="display-4">Library Management System</h1>
     </header>
-    <div id="app" class="d-flex flex-column flex-lg-row">
-        <nav class="bg-secondary p-3 d-flex flex-column">
-            <button id="view-users" class="btn btn-warning mb-2">View Users</button>
-            <button id="view-members" class="btn btn-warning mb-2">View Members</button>
-            <button id="view-books" class="btn btn-warning mb-2">View All Books</button>
-            <button id="add-member" class="btn btn-warning mb-2">Add Member</button>
-            <button id="add-book" class="btn btn-warning mb-2">Add Book</button>
-            <button id="add-book-copy" class="btn btn-warning mb-2">Add Book Copy</button>
-            <button id="check-out-records" class="btn btn-warning mb-2">Check Out Records</button>
-            <button id="log-out" class="btn btn-danger mt-auto">Log Out</button>
+    <div id="app">
+        <nav>
+            <button id="view-users">View Users</button>
+            <button id="view-members">View Members</button>
+            <button id="view-books">View All Books</button>
+            <button id="add-member">Add Member</button>
+            <button id="add-book">Add Book</button>
+            <button id="add-book-copy">Add Book Copy</button>
+            <button id="check-out-records">Check Out Records</button>
+            <button id="log-out">Log Out</button>
         </nav>
-        <div id="content" class="flex-grow-1 p-3"></div>
+        <div id="content"></div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="js/main.js" type="module"></script>
+    <script src="js/view-users.js" type="module"></script>
+    <script src="js/view-members.js" type="module"></script>
+    <script src="js/view-books.js" type="module"></script>
+    <script src="js/add-book.js" type="module"></script>
+    <script src="js/add-book-copy.js" type="module"></script>
+    
 </body>
 </html>

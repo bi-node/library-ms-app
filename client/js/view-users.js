@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Create card element
                 const card = document.createElement('div');
-                card.className = 'card bg-dark text-light mb-3';
+                card.className = 'card bg-light text-dark mb-3';
                 card.innerHTML = `
-                    <div class="card-body">
-                        <h2 class="card-title">Users</h2>
-                        <div class="table-responsive">
-                            <table class="table table-dark table-striped">
+                    <div>
+                        <h2>Users</h2>
+                        <div >
+                            <table>
                                 <thead>
                                     <tr>
                                         <th>ID</th>
