@@ -47,7 +47,7 @@ Content-Type: application/json
 
 
 {
-  "isbn" : "111-3-00",
+  "isbn" : "111-3-23",
   "noCopies" : 3
 }
 

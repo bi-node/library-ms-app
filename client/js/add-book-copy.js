@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear existing content
         contentDiv.innerHTML = '';
 
-        // Create form element
+        // Create form element for checking book by ISBN
         const form = document.createElement('form');
         form.id = 'check-book-form';
         form.innerHTML = `
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isbn = document.getElementById('isbn');
         const checkBookButton = document.getElementById('checkBook');
 
-        checkBookButton.addEventListener('click', async (event) => {
+        form.addEventListener('submit', async (event) => {
             event.preventDefault(); // Prevent form submission
 
             const isbnValue = isbn.value;
@@ -35,8 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(books => {
                     const book = books.find(x => x.isbn === isbnValue);
                     if (!book) {
-                        alert("Book is not in the database. Please add book first");
+                        alert("Book is not in the database. Please add the book first");
+                        form.reset();
                     } else {
+                        // Display message that the book is found
+                        alert("Book found in the database.");
+
+                        // Disable the form using an anonymous function
+                        (function(form) {
+                            const elements = form.elements;
+                            for (let i = 0; i < elements.length; i++) {
+                                elements[i].disabled = true;
+                            }
+                        })(form);
+
                         // Check if the add-book-form already exists
                         if (!document.getElementById('add-book-form')) {
                             const addForm = document.createElement('form');
@@ -66,15 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                 };
 
                                 try {
-                                        await fetch('http://localhost:3000/books/addbookcopy', {
-                                            method: 'POST',
-                                            headers: {
-                                                'Content-Type': 'application/json'
-                                            },
-                                            body: JSON.stringify(bookData)
-                                        });
+                                    await fetch('http://localhost:3000/books/addbookcopy', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify(bookData)
+                                    });
                                     alert('Book copies added successfully!');
                                     addForm.reset();
+                                    form.reset();
                                 } catch (error) {
                                     console.error('Error:', error);
                                     alert('Failed to add book copies');
