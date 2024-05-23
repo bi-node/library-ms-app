@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Users</title>
-    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    <title>Document</title>
+    <style>
+        #user-list {
+            margin-top: 20px;
+        }
+        .user-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    
-    <main>
-        <div id="user-list"></div>
-    </main>
-    <script src="view-users.js"></script>
+    <h1>Users</h1>
+<div id="user-list">
+    <!-- User list will be populated here -->
+</div>
+
+<script>
+    async function fetchUsers() {
+        try {
+            const response = await fetch('http://localhost:3000/users'); // Adjust the URL to your API endpoint
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const users = await response.json();
+            const userList = document.getElementById('user-list');
+            userList.innerHTML = '';
+            users.forEach(user => {
+                const userItem = document.createElement('div');
+                userItem.className = 'user-item';
+                userItem.textContent = `${user.id} (${user.username})`;
+                userList.appendChild(userItem);
+            });
+        } catch (error) {
+            console.error('Failed to fetch users:', error);
+            document.getElementById('user-list').innerHTML = '<p>Failed to load users. Please try again later.</p>';
+        }
+    }
+
+    fetchUsers();
+</script>
+
+
+
 </body>
 </html>

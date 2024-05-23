@@ -1,25 +1,64 @@
+/* index.css */
 body {
-    font-family: Arial, sans-serif;
-}
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-}
-nav ul {
-    list-style: none;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
 }
-nav ul li {
-    margin: 0 15px;
+
+header {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+
+#app {
+    height: calc(100vh - 70px);
 }
-main {
-    padding: 20px;
+
+#content {
+    overflow-y: auto;
+}
+
+.card {
+    border: none;
+    background-color: #e9f5e9;
+}
+
+.card-title {
+    color: #28a745;
+}
+
+.table th, .table td {
+    color: #343a40;
+}
+
+.table th {
+    background-color: #d4edda;
+}
+
+.table td {
+    background-color: #e9f5e9;
+}
+
+.btn-light {
+    color: #28a745;
+    background-color: #ffffff;
+    border-color: #28a745;
+}
+
+.btn-light:hover {
+    background-color: #d4edda;
+}
+
+h2 {
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 10px;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.navbar-nav {
+    width: 100%;
 }

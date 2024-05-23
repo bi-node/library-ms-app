@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(express.static('client'));
+app.use(express.static('public'));
 
 //routers
 app.use('/auth', authRouter);
