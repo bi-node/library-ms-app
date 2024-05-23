@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'card bg-light text-dark mb-3';
                 card.innerHTML = `
-                    <div>
-                        <h2>Users</h2>
+                    <div class="container-sm" id="userdiv">
+                        <h3>Users</h3>
                         <div >
-                            <table>
+                            <table class="table table-hover" id="usertable">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Role</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Role</th>
                                     </tr>
                                 </thead>
                                 <tbody id="user-table-body">

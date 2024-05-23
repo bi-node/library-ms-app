@@ -12,17 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'card bg-light text-dark mb-3';
                 card.innerHTML = `
-                    <div>
-                        <h2>members</h2>
+                    <div class="container-sm">
+                        <h3>Library Members</h3>
                         <div>
-                            <table>
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Telephone</th>
-                                        <th>Address</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Telephone</th>
+                                        <th scope="col">Address</th>
                                     </tr>
                                 </thead>
                                 <tbody id="table-body">

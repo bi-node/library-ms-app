@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.className = 'card bg-light text-dark mb-3';
                 card.innerHTML = `
                     <div>
-                        <h2>books</h2>
+                        <h3>List of Books</h3>
                         <div>
-                            <table>
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>ISBN</th>
-                                        <th>Book Title</th>
-                                        <th>Maximum Check-out Length</th>
-                                        <th>Authors</th>
+                                        <th scope="col">ISBN</th>
+                                        <th scope="col">Book Title</th>
+                                        <th scope="col">Maximum Check-out Length</th>
+                                        <th scope="col">Authors</th>
                                     </tr>
                                 </thead>
                                 <tbody id="table-body">

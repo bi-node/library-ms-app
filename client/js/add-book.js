@@ -9,29 +9,41 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create form element
         const form = document.createElement('form');
         form.id = 'add-book-form';
+        form.class='row g-3';
         form.innerHTML = `
-            <div>
-                <h2>Add Book</h2>
-                <div>
-                    <label for="isbn">ISBN</label>
-                    <input type="text" id="isbn" name="isbn" required>
-                </div>
-                <div>
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required>
-                </div>
-                <div>
-                    <label for="max_checkout_length">Checkout Length</label>
-                    <input type="number" id="max_checkout_length" name="max_checkout_length" required>
-                </div>
-                <div id="authors-container">
-                    <h3>Authors</h3>
-                    <button type="button" id="add-author-button">Add Author</button>
-                </div>
-                <div>
-                    <button type="submit">Add Book</button>
+        <div class="container">
+        <div class="row">
+            <!-- First Column for Add Book Form -->
+            <div class="col-md-6">
+                <div id="addBookDiv">
+                    <h2>Add Book</h2>
+                    <div>
+                        <label for="isbn">ISBN</label>
+                        <input type="text" id="isbn" name="isbn" required>
+                    </div>
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div>
+                        <label for="max_checkout_length">Checkout Length</label>
+                        <input type="number" id="max_checkout_length" name="max_checkout_length" required>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
                 </div>
             </div>
+            <!-- Second Column for Authors -->
+            <div class="col-md-6">
+                <div id="authors-container">
+                    <h3>Add Authors</h3>
+                    <button type="button" id="add-author-button">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
         `;
 
         contentDiv.appendChild(form);
