@@ -6,20 +6,6 @@ class CheckOutEntry{
         this.checkOutDate=checkOutDate;
         this.dueDate=dueDate;
     }
-
-    getBook(){
-        return this.book;
-    }
-
-    getCheckOutDate(){
-        return this.checkOutDate;
-    }
-
-    getDueDate(){
-        return this.dueDate;
-    }
-
-    
 }
 
 module.exports=CheckOutEntry;
