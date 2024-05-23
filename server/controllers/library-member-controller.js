@@ -3,16 +3,23 @@ const LibraryMember = require('../models/librarymember');
 const DataAccess = require('../data-access/data-access-facade');
 
 exports.getAllMembers = async function (req, res) {
-    
+
     try {
-        const allmembers = await DataAccess.readAllMember();
-        
-        if (allmembers) {
-        
+
+        if (req.query['memberid']) {
+            const member = await DataAccess.getmemberbyId(req.query['memberid'])
+            res.status(200).json(member);
+        }
+        else {
+            const allmembers = await DataAccess.readAllMember();
+
+            if (allmembers) {
+
                 res.status(200).json(allmembers);
-           
-        } else {
-            res.status(401).json({ "error": "User does not exist" });
+
+            } else {
+                res.status(401).json({ "error": "User does not exist" });
+            }
         }
     } catch (error) {
         res.status(500).json({ "error": "Internal server error" });
@@ -30,5 +37,7 @@ exports.addNewMember = async function (req, res) {
     catch (error) {
         res.status(500).json({ "error": "Internal server error" });
     }
-
 };
+
+
+

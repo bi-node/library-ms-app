@@ -28,6 +28,21 @@ module.exports = class DataAccessFacade {
         }
     }
 
+    static async getmemberbyId(memberid) {
+        const client = await pool.connect();
+        try {
+            const checkQueryText = 'SELECT * FROM public.members WHERE memberid = $1';
+            const resultset = await client.query(checkQueryText, [memberid]);
+            return resultset.rows[0];
+        } catch (error) {
+            console.error("Error reading all members:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
+    }
+
+
     static async readAllUser() {
         const client = await pool.connect();
         try {

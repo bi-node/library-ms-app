@@ -1,4 +1,3 @@
-const Book=require('./books');
 
 class CheckOutEntry{
     constructor(book, checkOutDate, dueDate){
