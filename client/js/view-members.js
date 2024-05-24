@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('content');
 
     viewmembersButton.addEventListener('click', async () => {
-        await fetch('http://localhost:3000/members')
+        await fetch(apiUrl+'/members')
             .then(response => response.json())
             .then(members => {
                 // Clear existing content

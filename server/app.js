@@ -16,7 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors()); // Add this line to enable CORS for all routes
 
-
+const PORT = process.env.PORT || 4000;
 
 
 app.use(express.json());
@@ -36,7 +36,6 @@ app.use('/checkoutentries', checkoutRouter);
 
 
 
-const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`connected to ${PORT}`));
 
 // Example route to test the database connection

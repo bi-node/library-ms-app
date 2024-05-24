@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault(); // Prevent form submission
 
             const isbnValue = isbn.value;
-            await fetch(`http://localhost:3000/books/?isbn=${isbnValue}`)
+            await fetch(apiUrl+`/books/?isbn=${isbnValue}`)
                 .then(response => response.json())
                 .then(books => {
                     const book = books.find(x => x.isbn === isbnValue);
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 };
 
                                 try {
-                                    await fetch('http://localhost:3000/books/addbookcopy', {
+                                    await fetch(apiUrl+'/books/addbookcopy', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json'

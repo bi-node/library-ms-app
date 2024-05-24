@@ -1,9 +1,15 @@
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const viewbooksButton = document.getElementById('view-books');
     const contentDiv = document.getElementById('content');
 
+
     viewbooksButton.addEventListener('click', async () => {
-        await fetch('http://localhost:3000/books')
+        
+    
+        await fetch(apiUrl+'/books')
             .then(response => response.json())
             .then(books => {
                 // Clear existing content

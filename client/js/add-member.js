@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 address: document.getElementById('address').value
             };
 
-            await fetch('http://localhost:3000/members', {
+            await fetch(apiUrl+'/members', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

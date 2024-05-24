@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const memberidValue = document.getElementById('memberid').value;
 
             try {
-                const isBookCopyAvailableResponse = await fetch(`http://localhost:3000/bookcopy/avail/${isbnValue}`);
-                const ismemberidAvailableResponse = await fetch(`http://localhost:3000/members/?memberid=${memberidValue}`);
+                const isBookCopyAvailableResponse = await fetch(apiUrl+`/bookcopy/avail/${isbnValue}`);
+                const ismemberidAvailableResponse = await fetch(apiUrl+`/members/?memberid=${memberidValue}`);
 
                 if (isBookCopyAvailableResponse.ok && ismemberidAvailableResponse.ok) {
                     const bookCopyData = await isBookCopyAvailableResponse.json();
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             };
 
                             try {
-                                await fetch('http://localhost:3000/checkoutentries', {
+                                await fetch(apiUrl+'/checkoutentries', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     body: JSON.stringify(entryData)
                                 });
                                 //updating the book copy database to set status to unavailable for the book
-                                await fetch(`http://localhost:3000/bookcopy/avail/${isbn}`, {
+                                await fetch(`apiUrl+'/bookcopy/avail/${isbn}`, {
                                     method: 'PUT'
                                 });
 
