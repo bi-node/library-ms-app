@@ -32,13 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 `;
-            //     "isbn": "978-1-23",
-            //     "title": "Data Structure and Algorithm",
-            //     "max_checkout_length": 7,
-            //     "authors": [
-            //       "William Munny"
-            //     ]
-            //   },
+            
                 contentDiv.appendChild(card);
 
                 // Insert book data into table
