@@ -71,7 +71,7 @@ GET http://localhost:3000/bookcopy/?isbn=111-3-00
 GET http://localhost:3000/bookcopy/111-3-00
 
 ###
-GET http://localhost:3000/bookcopy/avail/978-3-16
+GET http://localhost:3000/bookcopy/avail/111-3-00
 
 ###
 PUT http://localhost:3000/bookcopy/avail/111-3-00

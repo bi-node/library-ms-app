@@ -42,8 +42,10 @@ exports.getAvailableBookByISBN = async function (req, res) {
     try {
         const isbn = req.params.isbn;
         const getbooks = await DataAccess.getAvailableBookCopies(isbn);
-        if (getbooks) {
-            res.status(200).json(getbooks);
+        //get only one book among others
+        const getbook=getbooks[0];
+        if (getbook) {
+            res.status(200).json(getbook);
         } else {
             res.status(401).json({ "error": "Book copies does not exist" });
         }
