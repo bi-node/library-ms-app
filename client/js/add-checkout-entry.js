@@ -1,3 +1,5 @@
+import { displayAlert } from './alert.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const addBookButton = document.getElementById('check-out');
     const contentDiv = document.getElementById('content');
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const isbn = isbnValue;
                     
                     // Display message that the book is found
-                    alert("Book found in the database.");
+                    displayAlert("Book found in the database.",'success');
 
                     // Check if the add-entry-form already exists
                     if (!document.getElementById('add-entry-form')) {
@@ -105,21 +107,21 @@ document.addEventListener('DOMContentLoaded', () => {
                                     method: 'PUT'
                                 });
 
-                                alert('Book entry added successfully!');
+                                displayAlert('Book entry added successfully!','success');
                                 addForm.reset();
                                 form.reset();
                             } catch (error) {
                                 console.error('Error:', error);
-                                alert('Failed to add book entry');
+                                displayAlert('Failed to add book entry','danger');
                             }
                         });
                     }
                 } else {
-                    alert('Either the book copy or the member ID is not available.');
+                    displayAlert('Either the book copy or the member ID is not available.','warning');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Failed to check availability');
+                displayAlert('Failed to check availability','danger');
             }
         });
     });

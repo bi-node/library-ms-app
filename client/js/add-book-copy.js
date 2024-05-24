@@ -1,3 +1,5 @@
+import { displayAlert } from './alert.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const addBookButton = document.getElementById('add-book-copy');
     const contentDiv = document.getElementById('content');
@@ -44,11 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(books => {
                     const book = books.find(x => x.isbn === isbnValue);
                     if (!book) {
-                        alert("Book is not in the database. Please add the book first");
+                        displayAlert("Book is not in the database. Please add the book first",'warning');
                         form.reset();
                     } else {
                         // Display message that the book is found
-                        alert("Book found in the database.");
+                        displayAlert("Book found in the database.",'success');
 
                         // Disable the form using an anonymous function
                         (function(form) {
@@ -101,12 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                         },
                                         body: JSON.stringify(bookData)
                                     });
-                                    alert('Book copies added successfully!');
+                                    displayAlert('Book copies added successfully!','success');
                                     addForm.reset();
                                     form.reset();
                                 } catch (error) {
                                     console.error('Error:', error);
-                                    alert('Failed to add book copies');
+                                    displayAlert('Failed to add book copies','danger');
                                 }
                             });
                         }
@@ -114,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Failed to check book');
+                    displayAlert('Failed to check book','danger');
                 });
         });
     });

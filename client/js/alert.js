@@ -6,7 +6,7 @@ export function displayAlert(message, type) {
     alertDiv.role = 'alert';
     alertDiv.innerHTML = `
         ${message}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"  style="color: rgb(126, 217, 36)">
             <span aria-hidden="true">&times;</span>
         </button>
     `;

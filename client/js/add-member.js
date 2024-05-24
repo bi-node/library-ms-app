@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => response.json())
             .then(data => {
-                displayAlert('Member added successfully!');
+                displayAlert('Member added successfully!','success');
                 form.reset(); // Reset the form
             })
             .catch(error => {
