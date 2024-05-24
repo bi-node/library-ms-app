@@ -4,6 +4,7 @@ const librarymemberRouter=require('./routes/librarymember-routers')
 const bookRouter=require('./routes/book-router')
 const userRouter=require('./routes/user-router')
 const bookcopyRouter=require('./routes/bookcopy-router')
+const checkoutRouter=require('./routes/checkoutentry-router')
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
@@ -30,6 +31,7 @@ app.use('/members',librarymemberRouter);
 app.use('/books',bookRouter);
 app.use('/users',userRouter);
 app.use('/bookcopy',bookcopyRouter);
+app.use('/checkoutentries',checkoutRouter);
 
 
 

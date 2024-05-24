@@ -74,4 +74,17 @@ GET http://localhost:3000/bookcopy/111-3-00
 GET http://localhost:3000/bookcopy/avail/978-3-16
 
 ###
-PUT http://localhost:3000/bookcopy/avail/978-3-16
+PUT http://localhost:3000/bookcopy/avail/111-3-00
+
+###
+POST http://localhost:3000/checkoutentries
+Content-Type: application/json
+
+
+{
+    "isbn": "111-3-00",
+    "memberid": "1021",
+    "issued_bookno": "7",
+    "checkoutdate": "23/05/2024",
+    "duedate": "30/05/2024"
+  }

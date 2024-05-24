@@ -215,4 +215,20 @@ module.exports = class DataAccessFacade {
             client.release();
         }
     }
+    //data entries
+    static async addNewEntries(entry) {
+        const client = await pool.connect();
+        try {
+            const queryText = 'INSERT INTO public.checkout_entries(isbn, memberid, issued_bookno, checkoutdate, duedate) VALUES($1, $2, $3, $4, $5) RETURNING *';
+            const values = [entry.isbn, entry.memberid, entry.issued_bookno, entry.checkoutdate, entry.duedate];
+            const resultset = await client.query(queryText, values);
+            return resultset.rows[0]; // Return the inserted row
+        } catch (error) {
+            console.error("Error adding new member:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
+    }
+
 };

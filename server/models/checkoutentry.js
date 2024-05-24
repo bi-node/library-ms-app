@@ -1,9 +1,11 @@
 
 class CheckOutEntry{
-    constructor(book, checkOutDate, dueDate){
-        this.book=book;
-        this.checkOutDate=checkOutDate;
-        this.dueDate=dueDate;
+    constructor(isbn, memberid, issued_bookno, checkoutdate, duedate){
+        this.isbn=isbn;
+        this.memberid=memberid;
+        this.issued_bookno=issued_bookno;
+        this.checkoutdate=checkoutdate;
+        this.duedate=duedate;
     }
 }
 
