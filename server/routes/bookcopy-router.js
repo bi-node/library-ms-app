@@ -7,7 +7,7 @@ const router=express.Router();
 router.get('/',bookcopyController.getAllBooksCopy);
 router.get('/:id',bookcopyController.getBookCopiesById);
 router.get('/avail/:isbn',bookcopyController.getAvailableBookByISBN);
-//router.put('/avail')
+router.put('/avail/:isbn', bookcopyController.setBook);
 
 module.exports=router;
 

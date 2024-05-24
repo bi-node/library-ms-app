@@ -54,6 +54,20 @@ exports.getAvailableBookByISBN = async function (req, res) {
 
 };
 
+exports.setBook = async function (req, res) {
+    try {
+        const isbn = req.params.isbn;
+        const updatedBook = await DataAccess.setBooktoNA(isbn);
+        if (updatedBook) {
+            res.status(200).json(updatedBook);
+        } else {
+            res.status(401).json({ "error": "Book copy does not exist" });
+        }
+    } catch (error) {
+        res.status(500).json({ "error": "Internal server error" });
+    }
+};
+
 
 
 

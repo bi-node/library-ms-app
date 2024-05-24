@@ -71,7 +71,7 @@ module.exports = class DataAccessFacade {
         }
     }
 
-    static async readAllBooks(){
+    static async readAllBooks() {
         const client = await pool.connect();
         try {
             const resultset = await client.query('SELECT * FROM public.books');
@@ -84,7 +84,7 @@ module.exports = class DataAccessFacade {
         }
     }
 
-    static async getBookbyId(isbn){
+    static async getBookbyId(isbn) {
         const client = await pool.connect();
         try {
             const checkQueryText = 'SELECT * FROM public.books WHERE isbn = $1';
@@ -97,33 +97,33 @@ module.exports = class DataAccessFacade {
             client.release();
         }
     }
-    
+
     static async addNewBook(book) {
         const client = await pool.connect();
         try {
             await client.query('BEGIN'); // Start transaction
-    
+
             // Check if the ISBN already exists
             const checkQueryText = 'SELECT * FROM public.books WHERE isbn = $1';
             const checkResult = await client.query(checkQueryText, [book.isbn]);
-    
+
             if (checkResult.rows.length > 0) {
                 throw new Error('Book with this ISBN already exists');
             }
-    
+
             // Insert into books table
             const bookQueryText = 'INSERT INTO public.books(isbn, title, max_checkout_length, authors) VALUES($1, $2, $3, $4) RETURNING *';
             const bookValues = [book.isbn, book.title, book.max_checkout_length, book.authors];
             const bookResult = await client.query(bookQueryText, bookValues);
             const insertedBook = bookResult.rows[0];
-    
+
             // Insert into book_copies table
             const copyQueryText = 'INSERT INTO public.book_copies(isbn, status) VALUES($1, $2) RETURNING *';
             const copyValues = [insertedBook.isbn, 'available']; // Assuming the status is 'available' for a new book
             const copyResult = await client.query(copyQueryText, copyValues);
-    
+
             await client.query('COMMIT'); // Commit transaction
-    
+
             return insertedBook; // Return both inserted rows
         } catch (error) {
             await client.query('ROLLBACK'); // Rollback transaction on error
@@ -133,15 +133,15 @@ module.exports = class DataAccessFacade {
             client.release();
         }
     }
-    
+
 
     static async updateBookCopy(isbn, noCopies) {
         const client = await pool.connect();
         try {
-            for(let i=0;i<noCopies; i++){
-            const copyQueryText = 'INSERT INTO public.book_copies(isbn, status) VALUES($1, $2) RETURNING *';
-            const copyValues = [isbn, 'available']; // Assuming the status is 'available' for a new book
-            await client.query(copyQueryText, copyValues);
+            for (let i = 0; i < noCopies; i++) {
+                const copyQueryText = 'INSERT INTO public.book_copies(isbn, status) VALUES($1, $2) RETURNING *';
+                const copyValues = [isbn, 'available']; // Assuming the status is 'available' for a new book
+                await client.query(copyQueryText, copyValues);
             }
 
         } catch (error) {
@@ -152,7 +152,7 @@ module.exports = class DataAccessFacade {
         }
     }
 
-    static async readAllBooksCopy(){
+    static async readAllBooksCopy() {
         const client = await pool.connect();
         try {
             const resultset = await client.query('SELECT * FROM public.book_copies');
@@ -165,7 +165,7 @@ module.exports = class DataAccessFacade {
         }
     }
 
-    static async giveBookCopyByISBN(isbn){
+    static async giveBookCopyByISBN(isbn) {
         const client = await pool.connect();
         try {
             const checkQueryText = 'SELECT * FROM public.book_copies WHERE isbn = $1';
@@ -193,5 +193,26 @@ module.exports = class DataAccessFacade {
             client.release();
         }
     }
-    
+
+    static async setBooktoNA(isbn) {
+        const client = await pool.connect();
+        try {
+            const availableBookList = await this.getAvailableBookCopies(isbn);
+            if (availableBookList.length > 0) {
+                const onebook = availableBookList[0];
+                const bookcopyid = onebook.copyid;
+                const copyQueryText = 'UPDATE public.book_copies SET status = $1 WHERE copyid = $2 RETURNING *';
+                const copyValues = ['na', bookcopyid];
+                const result = await client.query(copyQueryText, copyValues);
+                return result.rows[0];
+            } else {
+                throw new Error('No available book copies found');
+            }
+        } catch (error) {
+            console.error(`Error updating book copy status for ISBN ${isbn}:`, error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
+    }
 };
