@@ -11,34 +11,35 @@ document.addEventListener('DOMContentLoaded', () => {
         form.id = 'add-book-form';
         form.className = 'row g-3';
         form.innerHTML = `
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="addBookDiv">
-                            <h2>Add Book</h2>
-                            <div>
-                                <label for="firstname">First Name</label>
-                                <input type="text" id="firstname" name="firstname" required>
-                            </div>
-                            <div>
-                                <label for="lastname">Last Name</label>
-                                <input type="text" id="lastname" name="lastname" required>
-                            </div>
-                            <div>
-                                <label for="telephone">Cell Phone No.</label>
-                                <input type="text" id="telephone" name="telephone" required>
-                            </div>
-                            <div>
-                                <label for="address">Address</label>
-                                <input type="text" id="address" name="address" required>
-                            </div>
-                            <div>
-                                <button type="submit">Submit</button>
-                            </div>
-                        </div>
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="addBookDiv">
+                    <h2>Add Member</h2>
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Cell Phone No.</label>
+                        <input type="text" class="form-control" id="telephone" name="telephone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    
         `;
 
         contentDiv.appendChild(form);

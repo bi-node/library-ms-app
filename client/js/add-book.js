@@ -12,37 +12,38 @@ document.addEventListener('DOMContentLoaded', () => {
         form.className = 'row g-3'; // Corrected from form.class to form.className
         form.innerHTML = `
         <div class="container">
-            <div class="row">
-                <!-- First Column for Add Book Form -->
-                <div class="col-md-6">
-                    <div id="addBookDiv">
-                        <h2>Add Book</h2>
-                        <div>
-                            <label for="isbn">ISBN</label>
-                            <input type="text" id="isbn" name="isbn" required>
-                        </div>
-                        <div>
-                            <label for="title">Title</label>
-                            <input type="text" id="title" name="title" required>
-                        </div>
-                        <div>
-                            <label for="max_checkout_length">Checkout Length</label>
-                            <input type="number" id="max_checkout_length" name="max_checkout_length" required>
-                        </div>
-                        <div>
-                            <button type="submit">Submit</button>
-                        </div>
-                    </div>
+    <div class="row">
+        <!-- First Column for Add Book Form -->
+        <div class="col-md-6">
+            <div id="addBookDiv">
+                <h2>Add Book</h2>
+                <div class="form-group">
+                    <label for="isbn">ISBN</label>
+                    <input type="text" class="form-control" id="isbn" name="isbn" required>
                 </div>
-                <!-- Second Column for Authors -->
-                <div class="col-md-6">
-                    <div id="authors-container">
-                        <h3>Add Authors</h3>
-                        <button type="button" id="add-author-button">Add</button>
-                    </div>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="max_checkout_length">Checkout Length</label>
+                    <input type="number" class="form-control" id="max_checkout_length" name="max_checkout_length" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
+        <!-- Second Column for Authors -->
+        <div class="col-md-6">
+            <div id="authors-container">
+                <h3>Add Authors</h3>
+                <button type="button" class="btn btn-success" id="add-author-button">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
         `;
 
         contentDiv.appendChild(form);
@@ -54,31 +55,38 @@ document.addEventListener('DOMContentLoaded', () => {
             const authorDiv = document.createElement('div');
             authorDiv.className = 'author';
             authorDiv.innerHTML = `
-                <div>
-                    <label for="firstname">First Name</label>
-                    <input type="text" class="firstname" name="firstname" required>
+            <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname" required>
+                    </div>
+                    <div>
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                    </div>
+                    <div>
+                        <label for="telephone">Telephone</label>
+                        <input type="text" class="form-control" id="telephone" name="telephone" required>
+                    </div>
+                    <div>
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                    <div>
+                        <label for="bio">Biography</label>
+                        <input type="text" class="form-control" id="bio" name="bio" required>
+                    </div>
+                    <div>
+                        <label for="credit">Credits</label>
+                        <input type="text" class="form-control" id="credit" name="credit" required>
+                    </div>
+                    <button type="button" class="btn btn-danger remove-author-button">Remove Author</button>
                 </div>
-                <div>
-                    <label for="lastname">Last Name</label>
-                    <input type="text" class="lastname" name="lastname" required>
-                </div>
-                <div>
-                    <label for="telephone">Telephone</label>
-                    <input type="text" class="telephone" name="telephone" required>
-                </div>
-                <div>
-                    <label for="address">Address</label>
-                    <input type="text" class="address" name="address" required>
-                </div>
-                <div>
-                    <label for="bio">Biography</label>
-                    <input type="text" class="bio" name="bio" required>
-                </div>
-                <div>
-                    <label for="credit">Credits</label>
-                    <input type="text" class="credit" name="credit" required>
-                </div>
-                <button type="button" class="remove-author-button">Remove Author</button>
+            </div>
+        </div>
+        
             `;
             authorsContainer.appendChild(authorDiv);
 

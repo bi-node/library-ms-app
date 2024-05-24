@@ -10,16 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const form = document.createElement('form');
         form.id = 'check-book-form';
         form.innerHTML = `
-            <div>
+        <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="checkBookDiv">
                 <h2>Check Book</h2>
-                <div>
-                    <label for="isbn">ISBN</label>
-                    <input type="text" id="isbn" name="isbn" required>
-                </div>
-                <div>
-                    <button type="submit" id="checkBook">Check Book</button>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter ISBN" id="isbn" name="isbn" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" id="checkBook">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+    
         `;
 
         contentDiv.appendChild(form);
@@ -54,16 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
                             const addForm = document.createElement('form');
                             addForm.id = 'add-book-form';
                             addForm.innerHTML = `
-                                <div>
-                                    <h2>Add Book Copy</h2>
-                                    <div>
-                                        <label for="noCopies">Number of Copies to add</label>
-                                        <input type="number" id="noCopies" name="noCopies" required>
-                                    </div>
-                                    <div>
-                                        <button type="submit" id="addBookCopy">Add Book Copies</button>
+                            <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="addBookCopyDiv">
+                                        <h2>Add Book Copy</h2>
+                                        <div class="form-group">
+                                            <label for="noCopies">Number of Copies to add</label>
+                                            <input type="number" class="form-control" id="noCopies" name="noCopies" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary" id="addBookCopy">Add Book Copies</button>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        
                             `;
                             contentDiv.appendChild(addForm);
                             const noCopies = document.getElementById('noCopies');

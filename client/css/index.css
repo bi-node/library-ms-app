@@ -19,4 +19,9 @@ body {
     display: flex;
     align-items: center;
 }
+.navbar-nav{
+    color:black;
+    display:inline-flexbox
+    
+}
 

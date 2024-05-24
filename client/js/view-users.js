@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'card bg-light text-dark mb-3';
                 card.innerHTML = `
-                    <div class="container-sm" id="userdiv">
+                    <div  class="container-sm">
                         <h3>Users</h3>
-                        <div >
-                            <table class="table table-hover" id="usertable">
+                        <div style="max-height: 400px; overflow-y: auto;" >
+                            <table class="table table-hover" style="font-size: 12px;">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>

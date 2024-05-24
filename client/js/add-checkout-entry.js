@@ -10,20 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const form = document.createElement('form');
         form.id = 'check-book-form';
         form.innerHTML = `
-            <div>
-                <h2>Check-out Entry</h2>
-                <div>
-                    <label for="isbn">ISBN</label>
-                    <input type="text" id="isbn" name="isbn" required>
-                </div>
-                <div>
-                    <label for="memberid">Library Member ID</label>
-                    <input type="text" id="memberid" name="memberid" required>
-                </div>
-                <div>
-                    <button type="submit" id="search">Search</button>
-                </div>
-            </div>
+        <div class="container">
+        <h2>Check-out Entry</h2>
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="text" class="form-control" id="isbn" name="isbn" required>
+        </div>
+        <div class="form-group">
+            <label for="memberid">Library Member ID</label>
+            <input type="text" class="form-control" id="memberid" name="memberid" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="search">Search</button>
+        </div>
+    </div>
+    
         `;
 
         contentDiv.appendChild(form);
@@ -62,20 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         const addForm = document.createElement('form');
                         addForm.id = 'add-entry-form';
                         addForm.innerHTML = `
-                            <div>
-                                <h3>Add Check Out Entry</h3>
-                                <div>
-                                    <label for="checkoutdate">Check-out Date</label>
-                                    <input type="text" id="checkoutdate" name="checkoutdate" required>
-                                </div>
-                                <div>
-                                    <label for="duedate">Due Date</label>
-                                    <input type="text" id="duedate" name="duedate" required>
-                                </div>
-                                <div>
-                                    <button type="submit" id="addEntry">Add Entry</button>
-                                </div>
-                            </div>
+                        <div class="container">
+                        <h3>Add Check Out Entry</h3>
+                        <div class="form-group">
+                            <label for="checkoutdate">Check-out Date</label>
+                            <input type="text" id="checkoutdate" class="form-control" name="checkoutdate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="duedate">Due Date</label>
+                            <input type="text" id="duedate" class="form-control" name="duedate" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" id="addEntry">Add Entry</button>
+                        </div>
+                         </div>                    
                         `;
                         contentDiv.appendChild(addForm);
 

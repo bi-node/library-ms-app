@@ -1,88 +1,32 @@
 /* login.css */
-
-/* Reset default browser styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #1e1e1e; /* Dark background */
-    color: #fff; /* White text */
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(0, 0, 0, 0.5); /* Background overlay color */
 }
 
-.container {
-    max-width: 400px;
-    margin: 80px auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-}
-
-.binod-library {
-    display: inline;
-    width: 100%;
-    
-    object-fit: cover;
-    margin-bottom: 20px;
-    border-radius: 8px;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 8px;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 1.2em;
-    border-radius: 4px;
+.card {
     border: none;
-    background-color: #333;
-    color: #fff;
+    border-radius: 15px;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-    outline: none;
-    background-color: #444;
+.card-body {
+    padding: 30px;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    background-color: #bf2c37; /* Red button */
+.form-control {
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: #d33500; /* Custom primary color */
     border: none;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 10px;
 }
 
-button:hover {
-    background-color: #a21d27; /* Darker red on hover */
+.btn-primary:hover {
+    background-color: #cb4a1f; /* Darker shade of primary color on hover */
 }
 
-#message {
-    margin-top: 20px;
-    font-size: 1.1em;
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(106, 176, 76, 0.5); /* Focus shadow color */
 }
-

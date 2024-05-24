@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'card bg-light text-dark mb-3';
                 card.innerHTML = `
-                    <div>
+                    <div  class="container-sm">
                         <h3>List of Books</h3>
-                        <div>
-                            <table class="table table-hover">
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <table class="table table-hover" style="font-size: 12px;">
                                 <thead>
                                     <tr>
                                         <th scope="col">ISBN</th>
