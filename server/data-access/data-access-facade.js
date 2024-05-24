@@ -178,4 +178,20 @@ module.exports = class DataAccessFacade {
             client.release();
         }
     }
+
+    static async getAvailableBookCopies(isbn) {
+        const client = await pool.connect();
+        try {
+            const status = 'available';
+            const checkQueryText = 'SELECT * FROM public.book_copies WHERE isbn = $1 AND status = $2';
+            const resultset = await client.query(checkQueryText, [isbn, status]);
+            return resultset.rows;
+        } catch (error) {
+            console.error(`Error fetching available book copies for ISBN ${isbn}:`, error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
+    }
+    
 };

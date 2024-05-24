@@ -5,6 +5,9 @@ const router=express.Router();
 
 //show all books copy
 router.get('/',bookcopyController.getAllBooksCopy);
+router.get('/:id',bookcopyController.getBookCopiesById);
+router.get('/avail/:isbn',bookcopyController.getAvailableBookByISBN);
+//router.put('/avail')
 
 module.exports=router;
 
