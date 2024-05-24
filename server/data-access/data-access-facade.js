@@ -152,8 +152,30 @@ module.exports = class DataAccessFacade {
         }
     }
 
+    static async readAllBooksCopy(){
+        const client = await pool.connect();
+        try {
+            const resultset = await client.query('SELECT * FROM public.book_copies');
+            return resultset.rows;
+        } catch (error) {
+            console.error("Error reading all members:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
+    }
 
-    updateLibraryMember(member) {
-        // Implementation here
+    static async giveBookCopyByISBN(isbn){
+        const client = await pool.connect();
+        try {
+            const checkQueryText = 'SELECT * FROM public.book_copies WHERE isbn = $1';
+            const resultset = await client.query(checkQueryText, [isbn]);
+            return resultset.rows;
+        } catch (error) {
+            console.error("Error reading all members:", error);
+            throw error; // Re-throw the error to be caught by the calling function
+        } finally {
+            client.release();
+        }
     }
 };

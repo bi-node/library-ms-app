@@ -60,4 +60,9 @@ GET http://localhost:3000/books/?isbn=978-1-23
 ###
 GET http://localhost:3000/users
 
+###
+GET http://localhost:3000/bookcopy
 
+
+###
+GET http://localhost:3000/bookcopy/?isbn=111-3-00
