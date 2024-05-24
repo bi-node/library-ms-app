@@ -1,4 +1,5 @@
-let accessTokens = [];
+let accessTokens = [{ "username": "batman", "accessToken": "sampleAccessToken" }];
+
 module.exports = class LoginResponse {
     constructor(username, accessToken) {
         this.username = username;
@@ -6,8 +7,6 @@ module.exports = class LoginResponse {
     }
 
     static findToken = (accessToken) => {
-        console.log(accessTokens)
-        console.log(accessToken)
         return accessTokens.find(x => x.accessToken === accessToken);
     }
 

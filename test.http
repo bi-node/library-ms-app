@@ -9,6 +9,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/members
+access-token: sampleAccessToken
 
 ###
 GET http://localhost:3000/members/?memberid=1021

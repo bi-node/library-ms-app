@@ -1,40 +1,17 @@
-
-//const users=[{id:1, username:"batman", password: "x"}];
-
-module.exports=class User{
-    constructor(username, password)
-    {
-        this.username=username;
-        this.password=password;
+let users = [{ "id": "1", "username": "kush", "password": "1234"},
+{ "id": "2", "username": "tina", "password": "1234" },
+{ "id": "3", "username": "abdun", "password": "1234" },
+{ "id": "4", "username": "batman", "password": "x" }
+]
+module.exports = class User {
+    constructor(id, username, password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
     }
 
-};
+    static findByUsername = (username) => {
+        return users.find(x => x.username === username);
+    }
 
-
-            
-       
-    
-
-
-    // async save() {
-    //     const client = await pool.connect();
-    //     try {
-    //         const result = await client.query(
-    //             'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *',
-    //             [this.username, this.password]
-    //         );
-    //         return result.rows[0];
-    //     } finally {
-    //         client.release();
-    //     }
-    // }
-
-   
-
-
-
-
-
-
-
-
+}
