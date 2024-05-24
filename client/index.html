@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
     <link rel="stylesheet" href="./css/index.css">
-    <!-- Add these lines in your <head> section -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -31,7 +30,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="view-members">View Members</a>
                 </li>
-                <!-- Add more links as needed -->
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="view-books">View Books</a>
                 </li>
@@ -50,12 +48,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="log-out">Log Out</a>
                 </li>
-
             </ul>
-
         </nav>
+        <div id="alert-container" class="container mt-3"></div>
         <div id="content"></div>
     </div>
+    <script src="js/alert.js" type="module"></script>
     <script src="js/view-users.js" type="module"></script>
     <script src="js/view-members.js" type="module"></script>
     <script src="js/view-books.js" type="module"></script>
@@ -63,7 +61,5 @@
     <script src="js/add-book-copy.js" type="module"></script>
     <script src="js/add-member.js" type="module"></script>
     <script src="js/add-checkout-entry.js" type="module"></script>
-
 </body>
-
 </html>

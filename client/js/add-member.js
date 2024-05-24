@@ -1,3 +1,5 @@
+import { displayAlert } from './alert.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const addBookButton = document.getElementById('add-member');
     const contentDiv = document.getElementById('content');
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => response.json())
             .then(data => {
-                alert('Member added successfully!');
+                displayAlert('Member added successfully!');
                 form.reset(); // Reset the form
             })
             .catch(error => {
