@@ -9,41 +9,40 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create form element
         const form = document.createElement('form');
         form.id = 'add-book-form';
-        form.class='row g-3';
+        form.className = 'row g-3'; // Corrected from form.class to form.className
         form.innerHTML = `
         <div class="container">
-        <div class="row">
-            <!-- First Column for Add Book Form -->
-            <div class="col-md-6">
-                <div id="addBookDiv">
-                    <h2>Add Book</h2>
-                    <div>
-                        <label for="isbn">ISBN</label>
-                        <input type="text" id="isbn" name="isbn" required>
-                    </div>
-                    <div>
-                        <label for="title">Title</label>
-                        <input type="text" id="title" name="title" required>
-                    </div>
-                    <div>
-                        <label for="max_checkout_length">Checkout Length</label>
-                        <input type="number" id="max_checkout_length" name="max_checkout_length" required>
-                    </div>
-                    <div>
-                        <button type="submit">Submit</button>
+            <div class="row">
+                <!-- First Column for Add Book Form -->
+                <div class="col-md-6">
+                    <div id="addBookDiv">
+                        <h2>Add Book</h2>
+                        <div>
+                            <label for="isbn">ISBN</label>
+                            <input type="text" id="isbn" name="isbn" required>
+                        </div>
+                        <div>
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" required>
+                        </div>
+                        <div>
+                            <label for="max_checkout_length">Checkout Length</label>
+                            <input type="number" id="max_checkout_length" name="max_checkout_length" required>
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Second Column for Authors -->
-            <div class="col-md-6">
-                <div id="authors-container">
-                    <h3>Add Authors</h3>
-                    <button type="button" id="add-author-button">Add</button>
+                <!-- Second Column for Authors -->
+                <div class="col-md-6">
+                    <div id="authors-container">
+                        <h3>Add Authors</h3>
+                        <button type="button" id="add-author-button">Add</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
         `;
 
         contentDiv.appendChild(form);
@@ -72,12 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <input type="text" class="address" name="address" required>
                 </div>
                 <div>
-                <label for="bio">Biography</label>
-                <input type="text" class="bio" name="bio" required>
+                    <label for="bio">Biography</label>
+                    <input type="text" class="bio" name="bio" required>
                 </div>
                 <div>
-                <label for="credit">Credits</label>
-                <input type="text" class="credit" name="credit" required>
+                    <label for="credit">Credits</label>
+                    <input type="text" class="credit" name="credit" required>
                 </div>
                 <button type="button" class="remove-author-button">Remove Author</button>
             `;
@@ -91,16 +90,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Handle form submission
         form.addEventListener('submit', async (event) => {
-        
+            event.preventDefault();
+
             const authors = [];
-            document.querySelectorAll('.author').forEach(authorDiv => {
+            const authorDivs = document.querySelectorAll('.author');
+
+            if (authorDivs.length === 0) {
+                alert('Please add at least one author.');
+                return;
+            }
+
+            authorDivs.forEach(authorDiv => {
                 const firstname = authorDiv.querySelector('.firstname').value;
                 const lastname = authorDiv.querySelector('.lastname').value;
                 const telephone = authorDiv.querySelector('.telephone').value;
                 const address = authorDiv.querySelector('.address').value;
                 const bio = authorDiv.querySelector('.bio').value;
                 const credit = authorDiv.querySelector('.credit').value;
-                authors.push(firstname.concat(" ",lastname));
+                authors.push({
+                    firstname: firstname,
+                    lastname: lastname,
+                    telephone: telephone,
+                    address: address,
+                    bio: bio,
+                    credit: credit
+                });
             });
 
             const bookData = {
@@ -110,23 +124,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 authors: authors
             };
 
-            await fetch('http://localhost:3000/books', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(bookData)
-            })
-            .then(response => response.json())
-            .then(data => {
+            try {
+                const response = await fetch('http://localhost:3000/books', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bookData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Book could not be added.');
+                }
+
+                const data = await response.json();
                 alert('Book added successfully!');
                 form.reset();
-                // Optionally clear authors container
                 authorsContainer.innerHTML = '<h3>Authors</h3><button type="button" id="add-author-button">Add Author</button>';
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error adding book:', error);
-            });
+                alert('Error adding book. Please try again.');
+            }
         });
     });
 });
