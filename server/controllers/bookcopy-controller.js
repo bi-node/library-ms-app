@@ -1,6 +1,6 @@
 
 const DataAccess = require('../data-access/data-access-facade');
-const responseBody = require('../models/ResponseBody');
+const responseBody = require('../models/ResponseBody')
 
 exports.getAllBooksCopy = async function (req, res) {
     try {
@@ -18,7 +18,7 @@ exports.getAllBooksCopy = async function (req, res) {
         }
     }
     catch (error) {
-        res.status(500).json({ "error": "Internal server error" });
+        res.status(500).json(new responseBody(null, "Internal server error", false));
     }
 
 };
@@ -27,15 +27,15 @@ exports.getBookCopiesById = async function (req, res) {
     try {
         const isbn = req.params.id;
         const bookcopy = await DataAccess.giveBookCopyByISBN(isbn)
-        res.status(200).json(bookcopy);
+       
         if (bookcopy) {
-            res.status(200).json(allbookscopies);
+            res.status(200).json(new responseBody(bookcopy, "Book copy retrieved successfully", true));
         } else {
-            res.status(401).json({ "error": "Book copies does not exist" });
+            res.status(401).json(new responseBody(null, "Book copy not found", false));
         }
     }
     catch (error) {
-        res.status(500).json({ "error": "Internal server error" });
+        res.status(500).json(new responseBody(null, "Internal server error", false));
     }
 };
 
@@ -46,13 +46,13 @@ exports.getAvailableBookByISBN = async function (req, res) {
         //get only one book among others
         const getbook=getbooks[0];
         if (getbook) {
-            res.status(200).json(getbook);
+            res.status(200).json(new responseBody(getbook, "Book copy retrieved successfully", true));
         } else {
-            res.status(401).json({ "error": "Book copies does not exist" });
+            res.status(401).json(new responseBody(null, "Book copy doesn't exist", false));
         }
     }
     catch (error) {
-        res.status(500).json({ "error": "Internal server error" });
+        res.status(500).json(new responseBody(null, "Internal server error", false));
     }
 
 };
@@ -62,12 +62,12 @@ exports.setBook = async function (req, res) {
         const isbn = req.params.isbn;
         const updatedBook = await DataAccess.setBooktoNA(isbn);
         if (updatedBook) {
-            res.status(200).json(updatedBook);
+            res.status(200).json(new responseBody(updatedBook, "Book copy retrieved successfully", true));
         } else {
-            res.status(401).json({ "error": "Book copy does not exist" });
+            res.status(401).json(new responseBody(null, "Book copy doesn't exist", false));
         }
     } catch (error) {
-        res.status(500).json({ "error": "Internal server error" });
+        res.status(500).json(new responseBody(null, "Internal server error", false));
     }
 };
 
