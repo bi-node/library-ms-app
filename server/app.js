@@ -23,8 +23,8 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static('client'));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '../client')));
+
 
 // Routers
 app.use('/auth', authRouter);

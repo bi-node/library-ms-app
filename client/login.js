@@ -47,7 +47,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
         if (user != null) {
             console.log(user)
             if (user.loggedIn && user.accessToken != "") {
-                window.location.replace('/client/index.html');
+                window.location.replace('/index.html');
             }
         }
     }

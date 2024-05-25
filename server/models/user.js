@@ -1,6 +1,6 @@
 let users = [{ "id": "1", "username": "kush", "password": "1234"},
 { "id": "2", "username": "tina", "password": "1234" },
-{ "id": "3", "username": "abdun", "password": "1234" },
+{ "id": "3", "username": "super", "password": "x" },
 { "id": "4", "username": "batman", "password": "x" }
 ]
 module.exports = class User {
