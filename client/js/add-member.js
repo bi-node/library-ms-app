@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="form-group">
                         <label for="telephone">Cell Phone No.</label>
-                        <input type="text" class="form-control" id="telephone" name="telephone" required>
+                        <input type="text" class="form-control" id="telephone" name="telephone" 
+                        required>
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>

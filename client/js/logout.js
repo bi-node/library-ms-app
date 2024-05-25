@@ -1,4 +1,4 @@
-import { displayAlert } from './alert.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const logout = document.getElementById('log-out');

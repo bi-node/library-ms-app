@@ -1,27 +1,29 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 
-}
-#navbar
-{
-    color: rgb(126, 217, 36);
-    background-color: black;
-}
+
 
 #usertable{
     width: 40%;
 }
 
 #lms{
-    display: flex;
-    align-items: center;
+  text-align: center;
 }
-.navbar-nav{
-    color:black;
-    display:inline-flexbox
+
+
+   
     
+
+.custom-color{
+    color:#008080
 }
+
+.lms{
+    color:#008080 ;
+    font-weight: 1200;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+
+
 
