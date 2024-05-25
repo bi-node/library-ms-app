@@ -1,20 +1,29 @@
+import { displayAlert } from './alert.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const logout = document.getElementById('log-out');
+    const confirmLogoutButton = document.getElementById('confirm-logout');
 
     logout.addEventListener('click', () => {
-        // Ask the user for confirmation
-        const confirmation = confirm("Are you sure you want to log out?");
-
-        if (confirmation) {
-            // Clear user session data
-            sessionStorage.removeItem("user");
-
-            // Redirect to the login page
-            reloadLogin();
-        } else {
-            console.log("Logout canceled.");
-        }
+        // Show the logout confirmation modal
+        $('#logoutModal').modal('show');
     });
+
+    confirmLogoutButton.addEventListener('click', () => {
+        // Clear user session data
+        clearSessionStorage();
+
+        // Redirect to the login page
+        reloadLogin();
+
+        // Hide the modal
+        $('#logoutModal').modal('hide');
+    });
+
+    function clearSessionStorage() {
+        console.log("Clearing session storage...");
+        sessionStorage.clear();
+    }
 
     function reloadLogin() {
         console.log('Redirecting to login page...');
