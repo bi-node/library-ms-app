@@ -1,25 +1,22 @@
-const express=require('express');
-const bookController=require('../controllers/book-controller');
+const express = require('express');
+const bookController = require('../controllers/book-controller');
+const authenticateUser = require('../middlewares/authenticateUser');
 
-const router=express.Router();
+const router = express.Router();
 
-//show all books
-router.get('/',bookController.getAllBooks);
+// Show all books
+router.get('/', authenticateUser, bookController.getAllBooks);
 
-router.get('/book',bookController.getBookById);
+// Get book by ID (ISBN)
+router.get('/book', authenticateUser, bookController.getBookById);
 
-router.get('/:id', bookController.getBookById)
+// Get book by ID with dynamic route
+router.get('/:id', authenticateUser, bookController.getBookById);
 
-//add new Book
-router.post('/',bookController.addNewBook);
+// Add new book
+router.post('/', authenticateUser, bookController.addNewBook);
 
-//add book copy
-router.post('/addbookcopy', bookController.addCopy);
+// Add book copy
+router.post('/addbookcopy', authenticateUser, bookController.addCopy);
 
-
-
-
-
-
-module.exports=router;
-
+module.exports = router;

@@ -1,18 +1,19 @@
 
 const DataAccess = require('../data-access/data-access-facade');
+const responseBody = require('../models/ResponseBody');
 
 exports.getAllBooksCopy = async function (req, res) {
     try {
         if (req.query['isbn']) {
             const bookcopy = await DataAccess.giveBookCopyByISBN(req.query['isbn'])
-            res.status(200).json(bookcopy);
+            res.status(200).json(new responseBody(bookcopy, "Book retrieved successfully", true));
         }
         else {
             const allbookscopies = await DataAccess.readAllBooksCopy();
             if (allbookscopies) {
-                res.status(200).json(allbookscopies);
+                res.status(200).json(new responseBody(allbookscopies, "Book retrieved successfully", true));
             } else {
-                res.status(401).json({ "error": "Book copies does not exist" });
+                res.status(401).json(new responseBody(null, "Book copies doesnot exist", false));
             }
         }
     }

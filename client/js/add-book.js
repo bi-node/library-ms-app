@@ -131,10 +131,16 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
+                const user = JSON.parse(sessionStorage.getItem('user'));
+                if (!user || !user.accessToken) {
+                    throw new Error('Network response was not ok'); // Exit the function early
+                }
+                
                 const response = await fetch(apiUrl+'/books', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Access-Token': user.accessToken
                     },
                     body: JSON.stringify(bookData)
                 });

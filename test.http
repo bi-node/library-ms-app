@@ -13,10 +13,12 @@ access-token: sampleAccessToken
 
 ###
 GET http://localhost:3000/members/?memberid=1021
+access-token: sampleAccessToken
 
 ###
 POST http://localhost:3000/members
 Content-Type: application/json
+access-token: sampleAccessToken
 
 
 {
@@ -28,15 +30,17 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/books
+access-token: sampleAccessToken
 
 
 ###
  POST http://localhost:3000/books
+ access-token: sampleAccessToken
  Content-Type: application/json
 
 
  {
-    "isbn": "111-3-00",
+    "isbn": "21-3-00",
     "title": "Fundamentals of C++ Programming",
     "max_checkout_length": 14,
     "authors": [
@@ -48,38 +52,48 @@ GET http://localhost:3000/books
 ###
 POST http://localhost:3000/books/addbookcopy
 Content-Type: application/json
+access-token: sampleAccessToken
 
 
 {
-  "isbn" : "111-3-23",
+  "isbn" : "21-3-00",
   "noCopies" : 3
 }
 
 ###
 GET http://localhost:3000/books/?isbn=978-1-23
+access-token: sampleAccessToken
 
 ###
 GET http://localhost:3000/users
+access-token: sampleAccessToken
+
 
 ###
 GET http://localhost:3000/bookcopy
+access-token: sampleAccessToken
 
 
 ###
 GET http://localhost:3000/bookcopy/?isbn=111-3-00
+access-token: sampleAccessToken
 
 ###
 GET http://localhost:3000/bookcopy/111-3-00
+access-token: sampleAccessToken
 
 ###
 GET http://localhost:3000/bookcopy/avail/111-3-00
+access-token: sampleAccessToken
 
 ###
 PUT http://localhost:3000/bookcopy/avail/111-3-00
+access-token: sampleAccessToken
 
 ###
 POST http://localhost:3000/checkoutentries
 Content-Type: application/json
+access-token: sampleAccessToken
 
 
 {
