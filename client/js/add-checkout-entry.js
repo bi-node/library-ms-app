@@ -38,8 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const memberidValue = document.getElementById('memberid').value;
 
             try {
-                const isBookCopyAvailableResponse = await fetch(apiUrl+`/bookcopy/avail/${isbnValue}`);
-                const ismemberidAvailableResponse = await fetch(apiUrl+`/members/?memberid=${memberidValue}`);
+
+                const user = JSON.parse(sessionStorage.getItem('user'));
+                if (!user || !user.accessToken) {
+                    throw new Error('User not authenticated');
+                }
+                const isBookCopyAvailableResponse = await fetch(apiUrl+`/bookcopy/avail/${isbnValue}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Access-Token': user.accessToken // Ensure this matches what your server expects
+                    }
+                });
+                const ismemberidAvailableResponse = await fetch(apiUrl+`/members/?memberid=${memberidValue}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Access-Token': user.accessToken // Ensure this matches what your server expects
+                    }
+                });
 
                 if (isBookCopyAvailableResponse.ok && ismemberidAvailableResponse.ok) {
                     const bookCopyData = await isBookCopyAvailableResponse.json();
@@ -95,16 +112,25 @@ document.addEventListener('DOMContentLoaded', () => {
                             };
 
                             try {
+                                const user = JSON.parse(sessionStorage.getItem('user'));
+                                if (!user || !user.accessToken) {
+                                    throw new Error('Network response was not ok'); // Exit the function early
+                                }  
+
                                 await fetch(apiUrl+'/checkoutentries', {
                                     method: 'POST',
                                     headers: {
-                                        'Content-Type': 'application/json'
+                                        'Content-Type': 'application/json',
+                                        'Access-Token': user.accessToken
                                     },
                                     body: JSON.stringify(entryData)
                                 });
                                 //updating the book copy database to set status to unavailable for the book
                                 await fetch(`apiUrl+'/bookcopy/avail/${isbn}`, {
-                                    method: 'PUT'
+                                    method: 'PUT',
+                                    headers: {
+                                        'Access-Token': user.accessToken
+                                    }
                                 });
 
                                 displayAlert('Book entry added successfully!','success');
@@ -113,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             } catch (error) {
                                 console.error('Error:', error);
                                 displayAlert('Failed to add book entry','danger');
+                                setTimeout(reloadLogin(), 5000);
+
                             }
                         });
                     }
@@ -122,7 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Error:', error);
                 displayAlert('Failed to check availability','danger');
+                setTimeout(reloadLogin(), 5000);
             }
         });
     });
+    function reloadLogin() {
+        console.log('Redirecting to login page...');
+        window.location.replace(clientUrlAdditive + '/login.html');
+    }
 });
